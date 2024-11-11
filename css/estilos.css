@@ -27,6 +27,11 @@ body{
     display: inline-block;
     margin: 1em 0em;
     border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+.boton:hover {
+    background-color: #052036;
+    transition: .2s ease-in-out;
 }
 .boton-secundario {
     border: 2px solid #144f80;
@@ -34,9 +39,15 @@ body{
     padding: .8em 2em;
     margin: 1em 0em;
     border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+.boton-secundario:hover {
+    background-color: #144f80;
+    color: #fff;
+    transition: .2s ease-in-out;
 }
 h1 {
-    font-size: 3em;
+    font-size: 2.4em;
 }
 
 h2 {
@@ -66,6 +77,7 @@ nav {
     width: 100%;
     top: 0;
     padding: 0 10%;
+    z-index: 1;
 }
 nav .logo {
     width: 120px;
@@ -77,6 +89,13 @@ nav .logo {
 }
 .menu li {
     padding: 10px;
+}
+.menu li a {
+    transition: .2s ease-in-out;
+}
+.menu li:not(:last-of-type):hover {
+    background-color: #c6d6e4;
+    transition: .2s ease-in-out;
 }
 
 #hero-section {
@@ -91,7 +110,7 @@ nav .logo {
     width: 40%;
 }
 .txt-container {
-    width: 30%;
+    width: 40%;
 }
 
 
