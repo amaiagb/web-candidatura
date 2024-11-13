@@ -7,6 +7,7 @@ a{color: inherit;}
 .flex {display: flex;}
 .justify-center {justify-content: center;}
 .justify-between {justify-content: space-between;}
+.justify-around {justify-content: space-around;}
 .items-center {align-items: center;}
 .items-stretch {align-items: stretch;}
 .flex-wrap {flex-wrap: wrap;}
@@ -48,12 +49,19 @@ body{
 }
 h1 {
     font-size: 2.4em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+    font-family: "Reem Kufi", san-serif;
+    font-weight: 400;
 }
 
 h2 {
     text-align: center;
     font-size: 2em;
     padding: 1em 0em;
+    font-family: "Reem Kufi", san-serif;
+    font-weight: 400;
+    color: #144f80;
 }
 section {
     padding: 3em 0em;
@@ -78,6 +86,11 @@ nav {
     top: 0;
     padding: 0 10%;
     z-index: 1;
+    /*
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    */
+    border-bottom: 2px solid #144f80;
+
 }
 nav .logo {
     width: 120px;
@@ -87,14 +100,16 @@ nav .logo {
     justify-content: flex-end;
     list-style-type: none;
 }
-.menu li {
-    padding: 10px;
+
+.menu-link{
+    padding: 0em 0em;
+    margin: 0 1em;
+    border-bottom: 1px solid transparent;
+    transition: .4s ease-in-out;
 }
-.menu li a {
-    transition: .2s ease-in-out;
-}
-.menu li:not(:last-of-type):hover {
-    background-color: #c6d6e4;
+.menu-link:hover {
+    
+    border-bottom: 1px solid #052036;
     transition: .2s ease-in-out;
 }
 
@@ -121,22 +136,72 @@ nav .logo {
     margin: 1%;
     padding: 1em;
     border-radius: 6px;
-
+    border: 1px solid #ddd;
+}
+.servicio-columna:hover {
+    background-color: #e0e9f1;
+    border: 1px solid #e0e9f1;
 }
 .servicio-columna h3 {
     padding: 1em 0em;
     color: #144f80;
+    font-weight: 600;
 }
+.servicio-columna p {
+    text-align: justify;
+}
+.servicio-columna img {
+    width: 50%;
+    mix-blend-mode: multiply;
+}
+
+/* --------------------- DESTACADO ---------------------- */
 #seccion-destacado {
-    background-color: #ddd;
+    background-color: #e0e9f1;
     padding: 3em 10%;
+    z-index: -2;
 }
+#seccion-destacado h2 {
+    font-size: 1.4em;
+    color: #052036;
+}
+/*
 #seccion-destacado .txt-container{
     width: 40%;
 }
 #seccion-destacado img{
-    width: 50%;
+    width: 40%;
 }
+*/
+.resaltado {
+    position: relative!important;
+    z-index: 0;
+}
+.resaltado::after {
+    content: "";
+    width: 100%;
+    height: 20px;
+    background: #ffd650;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    z-index: -1;
+    transform: rotate(-3deg);
+    animation: subrayar 3s infinite ;
+    animation-delay: 1s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes subrayar {
+    0% {
+      width: 0;
+    }
+  
+    25% {
+      width: 100%;
+    }
+  }
+  
+
 
 /* --------------------- EQUIPO ---------------------- */
 
@@ -180,6 +245,7 @@ nav .logo {
     font-weight: bold;
     font-size: 1.2em;
     letter-spacing: .1em;
+    font-family: "Reem Kufi", san-serif;
 }
 .miembro-equipo-rango {
     color: #666;
@@ -188,27 +254,122 @@ nav .logo {
 /* --------------------- PROYECTOS ---------------------- */
 
 #proyectos {
-    background-color: #eee;
+    background-color: #ddd;
+    padding-bottom: 2em;
 }
 
-.img-destacada, .galeria {
-    width: 50%;
+.proyecto {
+    width: 100%;
+    margin: 2em 0;
 }
+.proyecto:nth-of-type(1){
+    margin-top: 0;
+}
+.proyecto:nth-of-type(even){
+    flex-direction: row-reverse;
+}
+.proyecto-img {
+    width: 40%;
+    height: 40vh;
+    border-radius: 10px;
+    margin: 1em;
+    object-fit: cover;
+    border: 1px solid #052036;
+    padding: 2px;
+}
+
+.proyecto-txt {
+    width: 40%;
+    padding: 0 1em;
+}
+.proyecto-txt h3 {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+.proyecto-txt-tech {
+    background: #fff;
+    padding: .5em 1em;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: .9em;
+    letter-spacing: .1em;
+    margin-bottom: 1em;
+    font-weight: 600;
+    border: 1px solid #ccc;
+}
+
+
+
+
+
+/*
+//ESTILOS VERSION GALERIA
+
+.proyecto {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+}
+#proyecto1 {
+    background: url(https://img.freepik.com/premium-photo/website-mockup-ai-image-generator_784890-13464.jpg) no-repeat center;
+    background-size: cover;
+}
+.proyecto-info {
+    opacity: 0;
+    position: absolute;
+    bottom: -200px;
+    background-color: #e0ac4a;
+    color: #333;
+    padding: 1em;
+    transition: .2s ease-in-out;
+}
+.proyecto:hover .proyecto-info {
+    opacity: 1;
+    bottom: 0;
+    transition: .2s ease-in-out;
+}
+
+.proyecto-info h3 {
+    font-weight: 400;
+    font-size: 1.6em;
+    font-family: "Reem Kufi", san-serif;
+}
+.proyecto-info-tech {
+    background-color: #144f80;
+    color: #fff;
+    padding: .1em 1em;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
 .galeria {
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
 }
+.galeria .proyecto {
+    width: 50%;
+}
 .galeria img {
-   width: 49%;
+    width: 100%;
+    object-fit: cover;
     margin: 1px;
 }
+*/
+
 
 /* --------------------- COMENTARIOS ---------------------- */
-
+#comentarios h2 {
+    padding-bottom: .5em;
+}
 .subtitulo {
-    width: 60%;
+    width: 50%;
     text-align: center;
     margin: 0 auto;
+    padding-bottom: 1em;
 }
 #comentarios {
     width: 80%;
@@ -227,6 +388,10 @@ nav .logo {
     padding: 1em;
     width: 50%;
 }
+.comentario p {
+    color: #333;
+    font-size: .9em;
+}
 .nombre-cliente {
     font-weight: bold;
     font-size: .8em;
@@ -241,7 +406,7 @@ nav .logo {
 }
 .formulario {
     width: 50%;
-    padding: 2em;
+    padding: 0em 2em;
     box-shadow: 0px 0px 80px rgba(80,80,80, .1);
 }
 .formulario h3 {
